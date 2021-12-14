@@ -6,6 +6,8 @@ install mysql workbench: https://dev.mysql.com/downloads/workbench/
 
 ---
 
+$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+
 git clone https://github.com/Mohamed1204/HeylinkProject.git
 
 npm install
