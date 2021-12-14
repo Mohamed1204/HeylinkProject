@@ -1,8 +1,7 @@
 # HeylinkProject
 
-install mysql Community server: https://dev.mysql.com/downloads/mysql/
+install mysql server and workbench: https://dev.mysql.com/downloads/installer/
 
-install mysql workbench: https://dev.mysql.com/downloads/workbench/
 
 ---
 
