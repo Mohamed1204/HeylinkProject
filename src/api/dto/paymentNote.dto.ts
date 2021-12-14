@@ -2,23 +2,25 @@ import { Optional } from 'sequelize/types';
 
 export type CreatePaymentNoteDTO = {
   //uuid?: string;
-  status_code?: "CREATING" | "COMPLETED"
-  value?: number;
-  transactions_count?: number;
-  period_to_date : Date;
-  period_from_date: Date;
-
+  payment_note_status_code?: 'CREATING' | 'COMPLETED';
+  payment_note_value?: number;
+  payment_note_transactions_count?: number;
+  payment_note_period_to_date: Date;
+  payment_note_period_from_date: Date;
 };
 
-export type UpdatePaymentNoteDTO = Optional<CreatePaymentNoteDTO, 'period_to_date' | 'period_from_date' >;
+export type UpdatePaymentNoteDTO = Optional<
+  CreatePaymentNoteDTO,
+  'payment_note_period_to_date' | 'payment_note_period_from_date'
+>;
 
 
 export type FilterPaymentNoteDTO = {
-  uuid?: string;
-  status_code?: 'CREATING' | 'COMPLETED';
-  value?: number;
-  transactions_count?: number;
-  period_to_date?: Date;
-  period_from_date?: Date;
+  payment_note_uuid?: string;
+  payment_note_status_code?: 'CREATING' | 'COMPLETED';
+  payment_note_value?: number;
+  payment_note_transactions_count?: number;
+  payment_note_period_to_date?: Date;
+  payment_note_period_from_date?: Date;
 };
 

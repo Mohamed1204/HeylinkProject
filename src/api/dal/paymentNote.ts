@@ -19,9 +19,11 @@ export const update = async (uuid: string,payload: Partial<PaymentNoteInput>) =>
     throw new Error('not found');
   }
 
-   await PaymentNote.update(payload, {where:{
-    uuid:uuid
-  }});
+   await PaymentNote.update(payload, {
+     where: {
+       payment_note_uuid: uuid
+     }
+   });
   
 };
 
@@ -37,13 +39,17 @@ export const getAllRealtedTransactions = async (
   uuid: string
 ): Promise<TransactionOutPut[]> => {
   const array: TransactionOutPut[] = []
-
+  
+  console.log('uuid')
+  console.log(uuid)
+  
   const transactions = await Transaction.findAll({
-    where:{
-      PaymentNoteUuid:uuid
+    where: {
+      PaymentNotePaymentNoteUuid: uuid
     },
-    raw:true
+    raw: true
   });
+  
    if(transactions.length===0){
      return array
    }else{

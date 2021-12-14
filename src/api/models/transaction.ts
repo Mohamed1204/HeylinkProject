@@ -6,7 +6,7 @@ interface TransactionAtributes {
   transaction_status_code: string;
   transaction_value: number;
   transaction_datetime: Date;
-  PaymentNoteUuid?: string
+  PaymentNotePaymentNoteUuid?: string;
 }
 
 export interface TransactionOutPut extends Required<TransactionAtributes> {}
@@ -20,12 +20,11 @@ class Transaction
   public transaction_status_code!: string;
   public transaction_value!: number;
   public transaction_datetime!: Date;
-  public PaymentNoteUuid!: string;
+  public PaymentNotePaymentNoteUuid!: string;
 
   // timestamps!
   public readonly createdAt!: Date | null;
   public readonly updatedAt!: Date;
-  
 }
 
 Transaction.init(

@@ -2,57 +2,64 @@ import { DataTypes, Model, Optional } from 'sequelize';
 import sequelizeConnection from '../../config/dbConfig';
 
 interface PaymentNoteAttributes {
-  uuid: string;
-  period_to_date: Date
-  period_from_date: Date;
-  transactions_count: number;
-  value: number
-  status_code: 'CREATING' | 'COMPLETED' 
-  
+  payment_note_uuid: string;
+  payment_note_period_to_date: Date;
+  payment_note_period_from_date: Date;
+  payment_note_transactions_count: number;
+  payment_note_value: number;
+  payment_note_status_code: 'CREATING' | 'COMPLETED';
 }
-export interface PaymentNoteInput extends Optional<PaymentNoteAttributes, 'uuid' | 'transactions_count' | 'status_code' |'value'> {}
+export interface PaymentNoteInput
+  extends Optional<
+    PaymentNoteAttributes,
+    | 'payment_note_uuid'
+    | 'payment_note_transactions_count'
+    | 'payment_note_status_code'
+    | 'payment_note_value'
+  > {}
 export interface PaymentNoteOutput extends Required<PaymentNoteAttributes> {}
 
-class PaymentNote extends Model<PaymentNoteAttributes, PaymentNoteInput> implements PaymentNoteAttributes
+class PaymentNote
+  extends Model<PaymentNoteAttributes, PaymentNoteInput>
+  implements PaymentNoteAttributes
 {
-  public uuid!: string;
-  public period_to_date!: Date
-  public period_from_date!: Date;
-  public transactions_count!: number;
-  public value!: number
-  public status_code!: 'CREATING' | 'COMPLETED' 
+  public payment_note_uuid!: string;
+  public payment_note_period_to_date!: Date;
+  public payment_note_period_from_date!: Date;
+  public payment_note_transactions_count!: number;
+  public payment_note_value!: number;
+  public payment_note_status_code!: 'CREATING' | 'COMPLETED';
 
   // timestamps!
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
-  
 }
 
 PaymentNote.init(
   {
-    uuid: {
+    payment_note_uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+      primaryKey: true
       //allowNull: false
     },
-    period_to_date: {
+    payment_note_period_to_date: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    period_from_date: {
+    payment_note_period_from_date: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    value: {
+    payment_note_value: {
       type: DataTypes.FLOAT,
       defaultValue: 0
     },
-    status_code: {
+    payment_note_status_code: {
       type: DataTypes.STRING,
-      defaultValue: 'Creating'
+      defaultValue: 'CREATING'
     },
-    transactions_count: {
+    payment_note_transactions_count: {
       type: DataTypes.INTEGER,
       defaultValue: 0
     }

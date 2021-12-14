@@ -8,29 +8,29 @@ export const updateByDate = async (periodFromDate: Date, periodToDate: Date, pay
     var string_copy = (' ' + paymentNoteId).slice(1);
 
     await Transaction.update(
-     {
-       PaymentNoteUuid: paymentNoteId,
-       transaction_status_code: newTransactionStatus
-     },
-     {
-       where: {
-         transaction_datetime: {
-           [Op.and]: {
-             [Op.or]: { [Op.lte]: periodToDate, [Op.eq]: periodToDate },
-             [Op.gte]: periodFromDate
-           }
-         },
-         transaction_status_code: transaction_status
-       },
-     }
-   )
+      {
+        PaymentNotePaymentNoteUuid: paymentNoteId,
+        transaction_status_code: newTransactionStatus
+      },
+      {
+        where: {
+          transaction_datetime: {
+            [Op.and]: {
+              [Op.or]: { [Op.lte]: periodToDate, [Op.eq]: periodToDate },
+              [Op.gte]: periodFromDate
+            }
+          },
+          transaction_status_code: transaction_status
+        }
+      }
+    );
      
-   const updated= await Transaction.findAndCountAll({
-       where: {
-       PaymentNoteUuid: string_copy
-       },
-       raw:true
-     });
+   const updated = await Transaction.findAndCountAll({
+     where: {
+       PaymentNotePaymentNoteUuid: string_copy
+     },
+     raw: true
+   });
    
 
 
