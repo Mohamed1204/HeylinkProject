@@ -1,4 +1,4 @@
-# HeylinkProject
+# Project
 
 install mysql server and workbench: https://dev.mysql.com/downloads/installer/
 
